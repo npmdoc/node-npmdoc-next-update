@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/bahmutov/next-update"
-
-    >next-update (v1.5.1)</a>
+    <a href="https://github.com/bahmutov/next-update">next-update (v1.5.1)</a>
 </h1>
 <h4>Tests if module's dependencies can be updated to the newer version without breaking the tests</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.next-update">module next-update</a><ol>
 
@@ -527,7 +520,7 @@
     color: Boolean(options.color || options.colors),
     allow: options.allow || options.allowed,
     type: options.type,
-    changedLog: options[&#x27;changed-log&#x27;]
+    changedLog: options['changed-log']
   };
 
   var checkUpdates = nextUpdate.checkAllUpdates.bind(null, opts);
@@ -548,21 +541,21 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getDependenciesToCheck(options, moduleNames) {
-    check.verify.object(options, &#x27;missing options&#x27;);
-    debug(&#x27;initial module names&#x27;, moduleNames);
+    check.verify.object(options, 'missing options');
+    debug('initial module names', moduleNames);
     moduleNames = normalizeModuleNames(moduleNames);
-    debug(&#x27;normalized module names&#x27;, moduleNames);
+    debug('normalized module names', moduleNames);
 
     var workingDirectory = process.cwd();
 
-    var packageFilename = path.join(workingDirectory, &#x27;package.json&#x27;);
+    var packageFilename = path.join(workingDirectory, 'package.json');
     var nameVersionPairs = getKnownDependencies(packageFilename);
 
     var skipModules = getSkippedModules(packageFilename);
-    check.verify.array(skipModules, &#x27;expected list of skipped modules&#x27;);
+    check.verify.array(skipModules, 'expected list of skipped modules');
     if (skipModules.length) {
         if (!options.tldr) {
-            console.log(&#x27;ignoring the following modules&#x27;, skipModules.join(&#x27;, &#x27;));
+            console.log('ignoring the following modules', skipModules.join(', '));
         }
         nameVersionPairs = remove(nameVersionPairs, skipModules);
     }
@@ -570,7 +563,7 @@
 
     var toCheck = nameVersionPairs;
     if (moduleNames) {
-        debug(&#x27;matching module names&#x27;, moduleNames);
+        debug('matching module names', moduleNames);
         toCheck = nameVersionPairs.filter(function (nameVersion) {
             var name = nameVersion.name;
             return moduleNames.some(function (aModule) {
@@ -580,13 +573,13 @@
         });
         if (!options.tldr) {
             if (toCheck.length) {
-                console.log(&#x27;only checking modules&#x27;);
+                console.log('only checking modules');
                 console.log(toCheck.map(function (m) {
-                    return m.name + &#x27;@&#x27; + m.version;
+                    return m.name + '@' + m.version;
                 }));
             } else {
-                console.log(&#x27;Hmm, no modules to check&#x27;);
-                console.log(&#x27;from initial list\n&#x27; +
+                console.log('Hmm, no modules to check');
+                console.log('from initial list\n' +
                     JSON.stringify(nameVersionPairs, null, 2));
             }
         }
@@ -621,7 +614,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getKnownDependencies(packageFilename) {
-    check.verify.string(packageFilename, &#x27;missing package filename string&#x27;);
+    check.verify.string(packageFilename, 'missing package filename string');
 
     var workingPackage = require(packageFilename);
 
@@ -630,13 +623,13 @@
     var peerDependencies = workingPackage.peerDependencies || {};
 
     var all = [].concat(
-        format(&#x27;prod&#x27;, dependencies),
-        format(&#x27;dev&#x27;, devDependencies),
-        format(&#x27;peer&#x27;, peerDependencies)
+        format('prod', dependencies),
+        format('dev', devDependencies),
+        format('peer', peerDependencies)
     );
 
     var cleaned = cleanVersions(all);
-    // console.log(&#x27;nameVersionPairs&#x27;, cleaned);
+    // console.log('nameVersionPairs', cleaned);
     return cleaned;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -652,15 +645,15 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getLocalModuleVersion(name) {
-    check.verify.string(name, &#x27;missing name string&#x27;);
+    check.verify.string(name, 'missing name string');
 
     try {
-        var filename = path.join(&#x27;node_modules&#x27;, name, &#x27;package.json&#x27;);
-        var contents = fs.readFileSync(filename, &#x27;utf-8&#x27;);
+        var filename = path.join('node_modules', name, 'package.json');
+        var contents = fs.readFileSync(filename, 'utf-8');
         var pkg = JSON.parse(contents);
         return pkg.version;
     } catch (error) {
-        console.error(&#x27;could not fetch version for local module&#x27;, name);
+        console.error('could not fetch version for local module', name);
         console.error(error);
         return null;
     }
@@ -678,13 +671,13 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function moduleName(str) {
-    check.verify.string(str, &#x27;expected string module name&#x27;);
+    check.verify.string(str, 'expected string module name');
 
     if (isScopedName(str)) {
       return parseScopedName(str);
     }
 
-    var parts = str.split(&#x27;@&#x27;);
+    var parts = str.split('@');
     return {
         name: parts[0],
         version: parts[1]
@@ -703,15 +696,15 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function installModule(options, results) {
-    check.verify.object(options, &#x27;missing options&#x27;);
-    check.verify.string(options.name, &#x27;expected module name string&#x27;);
-    check.verify.string(options.version, &#x27;expected version string&#x27;);
+    check.verify.object(options, 'missing options');
+    check.verify.string(options.name, 'expected module name string');
+    check.verify.string(options.version, 'expected version string');
 
     if (options.keep) {
-        console.assert(typeof options.keep === &#x27;boolean&#x27;, &#x27;invalid keep&#x27;);
+        console.assert(typeof options.keep === 'boolean', 'invalid keep');
     }
     if (results) {
-        check.verify.array(results, &#x27;missing results&#x27;);
+        check.verify.array(results, 'missing results');
     }
 
     var cmd = formInstallCommand([[{
@@ -719,64 +712,64 @@
         version: options.version,
         works: true
     }]]);
-    check.verify.unemptyString(cmd, &#x27;could not form install command&#x27;);
+    check.verify.unemptyString(cmd, 'could not form install command');
     cmd = cmd.trim();
 
-    var moduleVersion = options.name + &#x27;@&#x27; + options.version, npm;
+    var moduleVersion = options.name + '@' + options.version, npm;
     if (options.keep) {
-        console.log(&#x27;  &#x27;, cmd);
-        var args = cmd.split(&#x27; &#x27;);
+        console.log('  ', cmd);
+        var args = cmd.split(' ');
         args.shift();
-        args.push(&#x27;--save-exact&#x27;);
+        args.push('--save-exact');
         npm = spawn(NPM_PATH, args);
     } else {
         if (!options.tldr) {
-            console.log(&#x27;  installing&#x27;, moduleVersion);
+            console.log('  installing', moduleVersion);
         }
-        npm = spawn(NPM_PATH, [&#x27;install&#x27;, moduleVersion]);
+        npm = spawn(NPM_PATH, ['install', moduleVersion]);
     }
 
-    var testOutput = &#x27;&#x27;;
-    var testErrors = &#x27;&#x27;;
+    var testOutput = '';
+    var testErrors = '';
 
-    npm.stdout.setEncoding(&#x27;utf-8&#x27;);
-    npm.stderr.setEncoding(&#x27;utf-8&#x27;);
+    npm.stdout.setEncoding('utf-8');
+    npm.stderr.setEncoding('utf-8');
 
     function hasError(str) {
         return /error/i.test(str);
     }
 
-    npm.stdout.on(&#x27;data&#x27;, function (data) {
+    npm.stdout.on('data', function (data) {
         if (hasError(data)) {
-            console.log(&#x27;stdout:&#x27;, data);
+            console.log('stdout:', data);
         }
         testOutput += data;
     });
 
-    npm.stderr.on(&#x27;data&#x27;, function (data) {
+    npm.stderr.on('data', function (data) {
         if (hasError(data)) {
-            console.log(&#x27;stderr:&#x27;, data);
+            console.log('stderr:', data);
         }
         testErrors += data;
     });
 
-    npm.on(&#x27;error&#x27;, function (err) {
-        console.error(&#x27;error:&#x27;, err);
+    npm.on('error', function (err) {
+        console.error('error:', err);
         testErrors += err.toString();
     });
 
     var deferred = q.defer();
-    npm.on(&#x27;exit&#x27;, function (code) {
+    npm.on('exit', function (code) {
         if (code) {
-            console.error(&#x27;npm returned&#x27;, code);
-            console.error(&#x27;errors:\n&#x27; + testErrors);
+            console.error('npm returned', code);
+            console.error('errors:\n' + testErrors);
             deferred.reject({
                 code: code,
                 errors: testErrors
             });
         } else {
             if (!options.tldr) {
-                console.log(moduleVersion, &#x27;installed successfully&#x27;);
+                console.log(moduleVersion, 'installed successfully');
             }
             deferred.resolve(results);
         }
@@ -805,7 +798,7 @@
     color: Boolean(options.color || options.colors),
     allow: options.allow || options.allowed,
     type: options.type,
-    changedLog: options[&#x27;changed-log&#x27;]
+    changedLog: options['changed-log']
   };
 
   var checkUpdates = nextUpdate.checkAllUpdates.bind(null, opts);
@@ -826,30 +819,30 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function printModulesTable(modules, options) {
-    verify.array(modules, &#x27;expect an array of modules&#x27;);
+    verify.array(modules, 'expect an array of modules');
     var haveStats = modules.some(function (m) {
-        return typeof m.stats === &#x27;object&#x27;;
+        return typeof m.stats === 'object';
     });
 
     var t = new Table();
     modules.forEach(function (info) {
-        verify.string(info.name, &#x27;missing module name &#x27; + info);
-        verify.string(info.version, &#x27;missing module version &#x27; + info);
+        verify.string(info.name, 'missing module name ' + info);
+        verify.string(info.version, 'missing module version ' + info);
 
-        t.cell(&#x27;package&#x27;, info.name);
-        t.cell(&#x27;current&#x27;, info.from);
-        t.cell(&#x27;available&#x27;, info.version);
+        t.cell('package', info.name);
+        t.cell('current', info.from);
+        t.cell('available', info.version);
 
-        if (haveStats &#x26;&#x26; info.stats) {
+        if (haveStats &amp;&amp; info.stats) {
             var stats = info.stats;
-            verify.object(stats, &#x27;expected stats object&#x27;);
+            verify.object(stats, 'expected stats object');
 
             var total = +stats.success + stats.failure;
             var probability = total ? stats.success / total : null;
             var probabilityStr = colorProbability(probability, options);
-            t.cell(&#x27;success %&#x27;, probabilityStr, markProbability);
-            t.cell(&#x27;successful updates&#x27;, info.stats.success, Table.Number(0));
-            t.cell(&#x27;failed updates&#x27;, info.stats.failure, Table.Number(0));
+            t.cell('success %', probabilityStr, markProbability);
+            t.cell('successful updates', info.stats.success, Table.Number(0));
+            t.cell('failed updates', info.stats.failure, Table.Number(0));
         }
         t.newRow();
     });
@@ -868,23 +861,23 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function reportAvailable(available, currentVersions, options) {
-    la(check.array(available), &#x27;expect an array of info objects&#x27;, available);
+    la(check.array(available), 'expect an array of info objects', available);
 
     if (!available.length) {
-        console.log(&#x27;nothing new is available&#x27;);
+        console.log('nothing new is available');
         return [];
     }
 
-    log(&#x27;report available&#x27;);
+    log('report available');
     log(available);
-    log(&#x27;current versions&#x27;);
+    log('current versions');
     log(JSON.stringify(currentVersions));
 
     la(check.maybe.object(currentVersions),
-        &#x27;expected current versions as an object, but was&#x27;, currentVersions);
+        'expected current versions as an object, but was', currentVersions);
 
     function getCurrentVersion(name) {
-        la(check.unemptyString(name), &#x27;missing name&#x27;);
+        la(check.unemptyString(name), 'missing name');
         if (!currentVersions) {
             return;
         }
@@ -893,7 +886,7 @@
         }
         if (check.object(currentVersions[name])) {
             la(check.string(currentVersions[name].version),
-                &#x27;missing version for&#x27;, name, &#x27;in&#x27;, currentVersions);
+                'missing version for', name, 'in', currentVersions);
             return currentVersions[name].version;
         }
     }
@@ -902,15 +895,15 @@
     var updateStats = {};
 
     available.forEach(function (info) {
-        la(check.unemptyString(info.name), &#x27;missing module name&#x27;, info);
-        la(check.array(info.versions), &#x27;missing module versions&#x27;, info);
+        la(check.unemptyString(info.name), 'missing module name', info);
+        la(check.array(info.versions), 'missing module versions', info);
 
         var currentVersion = getCurrentVersion(info.name);
-        log(&#x27;version for&#x27;, info.name, currentVersion);
+        log('version for', info.name, currentVersion);
 
         if (currentVersion) {
             la(check.unemptyString(currentVersion),
-                &#x27;missing version&#x27;, currentVersion, &#x27;for&#x27;, info.name);
+                'missing version', currentVersion, 'for', info.name);
             updateStats[info.name] = {
                 name: info.name,
                 from: currentVersion
@@ -936,16 +929,16 @@
         var modules = [];
 
         available.forEach(function (info) {
-            la(check.unemptyString(info.name), &#x27;missing module name&#x27;, info);
-            la(check.array(info.versions), &#x27;missing module versions&#x27;, info);
+            la(check.unemptyString(info.name), 'missing module name', info);
+            la(check.array(info.versions), 'missing module versions', info);
 
-            var sep = &#x27;, &#x27;, versions;
+            var sep = ', ', versions;
 
-            if (info.versions.length &#x3c; 5) {
+            if (info.versions.length &lt; 5) {
                 versions = info.versions.join(sep);
             } else {
                 versions = info.versions.slice(0, 2)
-                    .concat(&#x27;...&#x27;)
+                    .concat('...')
                     .concat(info.versions.slice(info.versions.length - 2))
                     .join(sep);
             }
@@ -954,8 +947,8 @@
             if (!stats) {
                 return;
             }
-            la(check.object(stats), &#x27;could not get stats for&#x27;, info.name,
-                &#x27;all&#x27;, updateStats, &#x27;available stats&#x27;, info);
+            la(check.object(stats), 'could not get stats for', info.name,
+                'all', updateStats, 'available stats', info);
             modules.push({
                 name: info.name,
                 version: versions,
@@ -963,13 +956,13 @@
                 stats: stats
             });
         });
-        console.log(&#x27;\navailable updates:&#x27;);
+        console.log('\navailable updates:');
         if (modules.length) {
             print(modules, options);
-            console.log(&#x27;update stats from&#x27;, clc.underline(stats.url));
+            console.log('update stats from', clc.underline(stats.url));
         } else {
             console.log(available);
-            console.log(&#x27;no stats is available yet for these updates&#x27;);
+            console.log('no stats is available yet for these updates');
         }
         return available;
     });
@@ -987,35 +980,35 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function installCommand(updates) {
-    check.verify.array(updates, &#x27;expected array of updates&#x27;);
+    check.verify.array(updates, 'expected array of updates');
     if (!updates.length) {
         return;
     }
 
-    var cmd = &#x27;&#x27;;
+    var cmd = '';
     var pkg = loadPackage();
     if (!pkg) {
         // assume all dependencies are normal
-        cmd = installCommandType(updates, &#x27;dependencies&#x27;);
+        cmd = installCommandType(updates, 'dependencies');
     } else {
 
         var updatesByDependencyType = splitByType(updates, pkg);
-        console.assert(updatesByDependencyType, &#x27;could not split updates by type&#x27;);
+        console.assert(updatesByDependencyType, 'could not split updates by type');
 
         // console.log(updatesByDependencyType)
 
-        var depCmd = installCommandType(updatesByDependencyType.dependencies, &#x27;dependencies&#x27;);
-        var devCmd = installCommandType(updatesByDependencyType.devDependencies, &#x27;devDependencies&#x27;);
+        var depCmd = installCommandType(updatesByDependencyType.dependencies, 'dependencies');
+        var devCmd = installCommandType(updatesByDependencyType.devDependencies, 'devDependencies');
         var peerCmd = installCommandType(updatesByDependencyType.peerDependencies,
-            &#x27;peerDependencies&#x27;);
+            'peerDependencies');
         if (depCmd) {
-            cmd += depCmd + &#x27;\n&#x27;;
+            cmd += depCmd + '\n';
         }
         if (devCmd) {
-            cmd += devCmd + &#x27;\n&#x27;;
+            cmd += devCmd + '\n';
         }
         if (peerCmd) {
-            cmd += peerCmd + &#x27;\n&#x27;;
+            cmd += peerCmd + '\n';
         }
     }
     if (cmd) {
@@ -1036,7 +1029,7 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function revert(moduleName) {
     if (moduleName) {
-        console.log(&#x27;reverting module&#x27;, JSON.stringify(moduleName));
+        console.log('reverting module', JSON.stringify(moduleName));
     }
 
     var toCheck = getDependenciesToCheck({}, moduleName);
@@ -1067,21 +1060,21 @@
     return text;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        console.log(&#x27;stderr:&#x27;, data);
+        console.log('stderr:', data);
     }
     testErrors += data;
 });
 
-npm.on(&#x27;error&#x27;, function (err) {
-    console.error(&#x27;error:&#x27;, err);
+npm.on('error', function (err) {
+    console.error('error:', err);
     testErrors += err.<span class="apidocCodeKeywordSpan">toString</span>();
 });
 
 var deferred = q.defer();
-npm.on(&#x27;exit&#x27;, function (code) {
+npm.on('exit', function (code) {
     if (code) {
-        console.error(&#x27;npm returned&#x27;, code);
-        console.error(&#x27;errors:\n&#x27; + testErrors);
+        console.error('npm returned', code);
+        console.error('errors:\n' + testErrors);
 ...</pre></li>
     </ul>
 
@@ -1108,21 +1101,21 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getDependenciesToCheck(options, moduleNames) {
-    check.verify.object(options, &#x27;missing options&#x27;);
-    debug(&#x27;initial module names&#x27;, moduleNames);
+    check.verify.object(options, 'missing options');
+    debug('initial module names', moduleNames);
     moduleNames = normalizeModuleNames(moduleNames);
-    debug(&#x27;normalized module names&#x27;, moduleNames);
+    debug('normalized module names', moduleNames);
 
     var workingDirectory = process.cwd();
 
-    var packageFilename = path.join(workingDirectory, &#x27;package.json&#x27;);
+    var packageFilename = path.join(workingDirectory, 'package.json');
     var nameVersionPairs = getKnownDependencies(packageFilename);
 
     var skipModules = getSkippedModules(packageFilename);
-    check.verify.array(skipModules, &#x27;expected list of skipped modules&#x27;);
+    check.verify.array(skipModules, 'expected list of skipped modules');
     if (skipModules.length) {
         if (!options.tldr) {
-            console.log(&#x27;ignoring the following modules&#x27;, skipModules.join(&#x27;, &#x27;));
+            console.log('ignoring the following modules', skipModules.join(', '));
         }
         nameVersionPairs = remove(nameVersionPairs, skipModules);
     }
@@ -1130,7 +1123,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
 
     var toCheck = nameVersionPairs;
     if (moduleNames) {
-        debug(&#x27;matching module names&#x27;, moduleNames);
+        debug('matching module names', moduleNames);
         toCheck = nameVersionPairs.filter(function (nameVersion) {
             var name = nameVersion.name;
             return moduleNames.some(function (aModule) {
@@ -1140,13 +1133,13 @@ npm.on(&#x27;exit&#x27;, function (code) {
         });
         if (!options.tldr) {
             if (toCheck.length) {
-                console.log(&#x27;only checking modules&#x27;);
+                console.log('only checking modules');
                 console.log(toCheck.map(function (m) {
-                    return m.name + &#x27;@&#x27; + m.version;
+                    return m.name + '@' + m.version;
                 }));
             } else {
-                console.log(&#x27;Hmm, no modules to check&#x27;);
-                console.log(&#x27;from initial list\n&#x27; +
+                console.log('Hmm, no modules to check');
+                console.log('from initial list\n' +
                     JSON.stringify(nameVersionPairs, null, 2));
             }
         }
@@ -1191,7 +1184,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getKnownDependencies(packageFilename) {
-    check.verify.string(packageFilename, &#x27;missing package filename string&#x27;);
+    check.verify.string(packageFilename, 'missing package filename string');
 
     var workingPackage = require(packageFilename);
 
@@ -1200,13 +1193,13 @@ npm.on(&#x27;exit&#x27;, function (code) {
     var peerDependencies = workingPackage.peerDependencies || {};
 
     var all = [].concat(
-        format(&#x27;prod&#x27;, dependencies),
-        format(&#x27;dev&#x27;, devDependencies),
-        format(&#x27;peer&#x27;, peerDependencies)
+        format('prod', dependencies),
+        format('dev', devDependencies),
+        format('peer', peerDependencies)
     );
 
     var cleaned = cleanVersions(all);
-    // console.log(&#x27;nameVersionPairs&#x27;, cleaned);
+    // console.log('nameVersionPairs', cleaned);
     return cleaned;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1227,15 +1220,15 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getLocalModuleVersion(name) {
-    check.verify.string(name, &#x27;missing name string&#x27;);
+    check.verify.string(name, 'missing name string');
 
     try {
-        var filename = path.join(&#x27;node_modules&#x27;, name, &#x27;package.json&#x27;);
-        var contents = fs.readFileSync(filename, &#x27;utf-8&#x27;);
+        var filename = path.join('node_modules', name, 'package.json');
+        var contents = fs.readFileSync(filename, 'utf-8');
         var pkg = JSON.parse(contents);
         return pkg.version;
     } catch (error) {
-        console.error(&#x27;could not fetch version for local module&#x27;, name);
+        console.error('could not fetch version for local module', name);
         console.error(error);
         return null;
     }
@@ -1258,13 +1251,13 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function moduleName(str) {
-    check.verify.string(str, &#x27;expected string module name&#x27;);
+    check.verify.string(str, 'expected string module name');
 
     if (isScopedName(str)) {
       return parseScopedName(str);
     }
 
-    var parts = str.split(&#x27;@&#x27;);
+    var parts = str.split('@');
     return {
         name: parts[0],
         version: parts[1]
@@ -1288,15 +1281,15 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function installModule(options, results) {
-    check.verify.object(options, &#x27;missing options&#x27;);
-    check.verify.string(options.name, &#x27;expected module name string&#x27;);
-    check.verify.string(options.version, &#x27;expected version string&#x27;);
+    check.verify.object(options, 'missing options');
+    check.verify.string(options.name, 'expected module name string');
+    check.verify.string(options.version, 'expected version string');
 
     if (options.keep) {
-        console.assert(typeof options.keep === &#x27;boolean&#x27;, &#x27;invalid keep&#x27;);
+        console.assert(typeof options.keep === 'boolean', 'invalid keep');
     }
     if (results) {
-        check.verify.array(results, &#x27;missing results&#x27;);
+        check.verify.array(results, 'missing results');
     }
 
     var cmd = formInstallCommand([[{
@@ -1304,64 +1297,64 @@ npm.on(&#x27;exit&#x27;, function (code) {
         version: options.version,
         works: true
     }]]);
-    check.verify.unemptyString(cmd, &#x27;could not form install command&#x27;);
+    check.verify.unemptyString(cmd, 'could not form install command');
     cmd = cmd.trim();
 
-    var moduleVersion = options.name + &#x27;@&#x27; + options.version, npm;
+    var moduleVersion = options.name + '@' + options.version, npm;
     if (options.keep) {
-        console.log(&#x27;  &#x27;, cmd);
-        var args = cmd.split(&#x27; &#x27;);
+        console.log('  ', cmd);
+        var args = cmd.split(' ');
         args.shift();
-        args.push(&#x27;--save-exact&#x27;);
+        args.push('--save-exact');
         npm = spawn(NPM_PATH, args);
     } else {
         if (!options.tldr) {
-            console.log(&#x27;  installing&#x27;, moduleVersion);
+            console.log('  installing', moduleVersion);
         }
-        npm = spawn(NPM_PATH, [&#x27;install&#x27;, moduleVersion]);
+        npm = spawn(NPM_PATH, ['install', moduleVersion]);
     }
 
-    var testOutput = &#x27;&#x27;;
-    var testErrors = &#x27;&#x27;;
+    var testOutput = '';
+    var testErrors = '';
 
-    npm.stdout.setEncoding(&#x27;utf-8&#x27;);
-    npm.stderr.setEncoding(&#x27;utf-8&#x27;);
+    npm.stdout.setEncoding('utf-8');
+    npm.stderr.setEncoding('utf-8');
 
     function hasError(str) {
         return /error/i.test(str);
     }
 
-    npm.stdout.on(&#x27;data&#x27;, function (data) {
+    npm.stdout.on('data', function (data) {
         if (hasError(data)) {
-            console.log(&#x27;stdout:&#x27;, data);
+            console.log('stdout:', data);
         }
         testOutput += data;
     });
 
-    npm.stderr.on(&#x27;data&#x27;, function (data) {
+    npm.stderr.on('data', function (data) {
         if (hasError(data)) {
-            console.log(&#x27;stderr:&#x27;, data);
+            console.log('stderr:', data);
         }
         testErrors += data;
     });
 
-    npm.on(&#x27;error&#x27;, function (err) {
-        console.error(&#x27;error:&#x27;, err);
+    npm.on('error', function (err) {
+        console.error('error:', err);
         testErrors += err.toString();
     });
 
     var deferred = q.defer();
-    npm.on(&#x27;exit&#x27;, function (code) {
+    npm.on('exit', function (code) {
         if (code) {
-            console.error(&#x27;npm returned&#x27;, code);
-            console.error(&#x27;errors:\n&#x27; + testErrors);
+            console.error('npm returned', code);
+            console.error('errors:\n' + testErrors);
             deferred.reject({
                 code: code,
                 errors: testErrors
             });
         } else {
             if (!options.tldr) {
-                console.log(moduleVersion, &#x27;installed successfully&#x27;);
+                console.log(moduleVersion, 'installed successfully');
             }
             deferred.resolve(results);
         }
@@ -1388,20 +1381,20 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <li>description and source-code<pre class="apidocCodePre">function available(moduleName, options) {
     options = options || {};
     var toCheck = getDependenciesToCheck(options, moduleName);
-    la(check.array(toCheck), &#x27;expected object of deps to check, was&#x27;, toCheck);
+    la(check.array(toCheck), 'expected object of deps to check, was', toCheck);
     var toCheckHash = _.zipObject(
-        _.pluck(toCheck, &#x27;name&#x27;),
-        _.pluck(toCheck, &#x27;version&#x27;)
+        _.pluck(toCheck, 'name'),
+        _.pluck(toCheck, 'version')
     );
 
-    log(&#x27;need to check these dependencies&#x27;);
+    log('need to check these dependencies');
     log(toCheckHash);
 
     var nextVersionsPromise = nextVersions(options, toCheck);
     return nextVersionsPromise.then(function (info) {
         return reportAvailable(info, toCheckHash, options);
     }, function (error) {
-        console.error(&#x27;Could not fetch available modules\n&#x27;, error);
+        console.error('Could not fetch available modules\n', error);
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1422,12 +1415,12 @@ npm.on(&#x27;exit&#x27;, function (code) {
     var checkLatestOnly = !!options.latest;
     var checkCommand = options.testCommand;
     if (checkCommand) {
-        verify.unemptyString(checkCommand, &#x27;invalid test command &#x27; + checkCommand);
+        verify.unemptyString(checkCommand, 'invalid test command ' + checkCommand);
     }
     var all = options.all;
     if (all) {
         checkLatestOnly = true;
-        console.log(&#x27;will check only latest versions because testing all&#x27;);
+        console.log('will check only latest versions because testing all');
     }
 
     if (check.string(moduleName)) {
@@ -1435,10 +1428,10 @@ npm.on(&#x27;exit&#x27;, function (code) {
     }
     checkLatestOnly = !!checkLatestOnly;
     if (checkCommand) {
-        check.verify.string(checkCommand, &#x27;expected string test command&#x27;);
+        check.verify.string(checkCommand, 'expected string test command');
     }
     var toCheck = getDependenciesToCheck(options, moduleName);
-    check.verify.array(toCheck, &#x27;dependencies to check should be an array&#x27;);
+    check.verify.array(toCheck, 'dependencies to check should be an array');
 
     makeSureValidModule(moduleName, toCheck);
 
@@ -1456,12 +1449,12 @@ npm.on(&#x27;exit&#x27;, function (code) {
     return isOnline()
         .then(function (online) {
             if (!online) {
-                throw new Error(&#x27;Need to be online to check new modules&#x27;);
+                throw new Error('Need to be online to check new modules');
             }
         }).then(function () {
             if (isSingleSpecificVersion(moduleName)) {
                 var nv = nameVersionParser(moduleName[0]);
-                console.log(&#x27;checking only specific:&#x27;, nv.name, nv.version);
+                console.log('checking only specific:', nv.name, nv.version);
                 var list = [{
                     name: nv.name,
                     versions: [nv.version]
@@ -1489,7 +1482,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <li>description and source-code<pre class="apidocCodePre">function checkCurrentInstall(options) {
     options = options || {};
     var log = options.tldr ? _.noop : boundConsoleLog;
-    log(&#x27;checking if the current state works&#x27;);
+    log('checking if the current state works');
 
     return cleanDependencies()
         .then(checkDependenciesInstalled)
@@ -1497,7 +1490,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
             return runTest(options, options.testCommand)();
         })
         .then(function () {
-            console.log(&#x27;&#x3e; tests are passing at the start&#x27;);
+            console.log('&gt; tests are passing at the start');
         });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1518,30 +1511,30 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function printModulesTable(modules, options) {
-    verify.array(modules, &#x27;expect an array of modules&#x27;);
+    verify.array(modules, 'expect an array of modules');
     var haveStats = modules.some(function (m) {
-        return typeof m.stats === &#x27;object&#x27;;
+        return typeof m.stats === 'object';
     });
 
     var t = new Table();
     modules.forEach(function (info) {
-        verify.string(info.name, &#x27;missing module name &#x27; + info);
-        verify.string(info.version, &#x27;missing module version &#x27; + info);
+        verify.string(info.name, 'missing module name ' + info);
+        verify.string(info.version, 'missing module version ' + info);
 
-        t.cell(&#x27;package&#x27;, info.name);
-        t.cell(&#x27;current&#x27;, info.from);
-        t.cell(&#x27;available&#x27;, info.version);
+        t.cell('package', info.name);
+        t.cell('current', info.from);
+        t.cell('available', info.version);
 
-        if (haveStats &#x26;&#x26; info.stats) {
+        if (haveStats &amp;&amp; info.stats) {
             var stats = info.stats;
-            verify.object(stats, &#x27;expected stats object&#x27;);
+            verify.object(stats, 'expected stats object');
 
             var total = +stats.success + stats.failure;
             var probability = total ? stats.success / total : null;
             var probabilityStr = colorProbability(probability, options);
-            t.cell(&#x27;success %&#x27;, probabilityStr, markProbability);
-            t.cell(&#x27;successful updates&#x27;, info.stats.success, Table.Number(0));
-            t.cell(&#x27;failed updates&#x27;, info.stats.failure, Table.Number(0));
+            t.cell('success %', probabilityStr, markProbability);
+            t.cell('successful updates', info.stats.success, Table.Number(0));
+            t.cell('failed updates', info.stats.failure, Table.Number(0));
         }
         t.newRow();
     });
@@ -1566,48 +1559,48 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function cleanVersion(version, name) {
     var originalVersion = version;
-    verify.unemptyString(version, &#x27;missing version string&#x27; + version);
-    verify.unemptyString(name, &#x27;missing name string&#x27; + name);
+    verify.unemptyString(version, 'missing version string' + version);
+    verify.unemptyString(name, 'missing name string' + name);
 
     if (isUrl(version)) {
-        // version = version.substr(version.indexOf(&#x27;#&#x27;) + 1);
+        // version = version.substr(version.indexOf('#') + 1);
 
-        // hmm, because we don&#x27;t have a way to fetch git tags yet
+        // hmm, because we don't have a way to fetch git tags yet
         // just skip these dependencies
-        console.log(&#x27;Cannot handle git repos, skipping&#x27;, name, &#x27;at&#x27;, version);
+        console.log('Cannot handle git repos, skipping', name, 'at', version);
         return;
     }
-    if (version === &#x27;original&#x27; ||
-        version === &#x27;modified&#x27; ||
-        version === &#x27;created&#x27;) {
+    if (version === 'original' ||
+        version === 'modified' ||
+        version === 'created') {
         return;
     }
 
-    version = version.replace(&#x27;~&#x27;, &#x27;&#x27;).replace(&#x27;^&#x27;, &#x27;&#x27;);
+    version = version.replace('~', '').replace('^', '');
     var twoDigitVersion = /^\d+\.\d+$/;
     if (twoDigitVersion.test(version)) {
-        version += &#x27;.0&#x27;;
+        version += '.0';
     }
-    if (version === &#x27;latest&#x27; || version === &#x27;*&#x27;) {
-        console.log(&#x27;Module&#x27;, name, &#x27;uses version&#x27;, version);
-        console.log(&#x27;It is recommented to list a specific version number&#x27;);
+    if (version === 'latest' || version === '*') {
+        console.log('Module', name, 'uses version', version);
+        console.log('It is recommented to list a specific version number');
         version = localVersion(name);
         if (!version) {
-            version = &#x27;0.0.1&#x27;;
+            version = '0.0.1';
         }
-        console.log(&#x27;module&#x27;, name, &#x27;local version&#x27;, version);
+        console.log('module', name, 'local version', version);
     }
     try {
         version = semver.clean(version);
     } catch (err) {
-        console.error(&#x27;exception when cleaning version&#x27;, version);
+        console.error('exception when cleaning version', version);
         return;
     }
     if (!version) {
-        log(&#x27;could not clean version &#x27; + originalVersion + &#x27; for &#x27; + name);
+        log('could not clean version ' + originalVersion + ' for ' + name);
         return;
     }
-    console.assert(version, &#x27;missing clean version &#x27; + originalVersion + &#x27; for &#x27; + name);
+    console.assert(version, 'missing clean version ' + originalVersion + ' for ' + name);
     return version;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1623,7 +1616,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function cleanVersions(nameVersionPairs) {
-    check.verify.array(nameVersionPairs, &#x27;expected array&#x27;);
+    check.verify.array(nameVersionPairs, 'expected array');
     var cleaned = nameVersionPairs
         .map(cleanVersionObject)
         .filter(check.object);
@@ -1644,11 +1637,11 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <li>description and source-code<pre class="apidocCodePre">function fetchVersions(nameVersion) {
     // console.log(nameVersion);
     // TODO use check.schema
-    check.verify.object(nameVersion, &#x27;expected name, version object&#x27;);
+    check.verify.object(nameVersion, 'expected name, version object');
     var name = nameVersion.name;
     var version = nameVersion.version;
-    check.verify.string(name, &#x27;missing name string&#x27;);
-    check.verify.string(version, &#x27;missing version string&#x27;);
+    check.verify.string(name, 'missing name string');
+    check.verify.string(version, 'missing version string');
 
     var cleanVersionForName = _.partial(cleanVersionFor, name);
     function isLaterVersion(ver) {
@@ -1656,46 +1649,46 @@ npm.on(&#x27;exit&#x27;, function (code) {
         return later;
     }
 
-    // console.log(&#x27;fetching versions for&#x27;, name, &#x27;current version&#x27;, version);
+    // console.log('fetching versions for', name, 'current version', version);
     var MAX_WAIT_TIMEOUT = 25000;
     var deferred = q.defer();
 
     function rejectOnTimeout() {
-        var msg = &#x27;timed out waiting for NPM for package &#x27; + name +
-            &#x27; after &#x27; + MAX_WAIT_TIMEOUT + &#x27;ms&#x27;;
+        var msg = 'timed out waiting for NPM for package ' + name +
+            ' after ' + MAX_WAIT_TIMEOUT + 'ms';
         console.error(msg);
         deferred.reject(msg);
     }
 
     function escapeName(str) {
-        return str.replace(&#x27;/&#x27;, &#x27;%2F&#x27;);
+        return str.replace('/', '%2F');
     }
 
     registryUrl().then(function (npmUrl) {
-        log(&#x27;NPM registry url&#x27;, npmUrl);
-        la(check.webUrl(npmUrl), &#x27;need npm registry url, got&#x27;, npmUrl);
+        log('NPM registry url', npmUrl);
+        la(check.webUrl(npmUrl), 'need npm registry url, got', npmUrl);
 
-        npmUrl = npmUrl.replace(/^https:/, &#x27;http:&#x27;).trim();
+        npmUrl = npmUrl.replace(/^https:/, 'http:').trim();
         var url = npmUrl + escapeName(name);
 
         // TODO how to detect if the registry is not responding?
 
-        log(&#x27;getting url&#x27;, url);
+        log('getting url', url);
         request.get(url, onNPMversions);
         var timer = setTimeout(rejectOnTimeout, MAX_WAIT_TIMEOUT);
 
         function onNPMversions(err, response, body) {
-            log(&#x27;got response for&#x27;, url);
+            log('got response for', url);
             clearTimeout(timer);
 
             if (err) {
-                console.error(&#x27;ERROR when fetching info for package&#x27;, name);
+                console.error('ERROR when fetching info for package', name);
                 deferred.reject(err.message);
                 return;
             }
 
             if (is404(response)) {
-                log(&#x27;404 response for&#x27;, url);
+                log('404 response for', url);
                 deferred.resolve({
                     name: name,
                     versions: []
@@ -1704,11 +1697,11 @@ npm.on(&#x27;exit&#x27;, function (code) {
             }
 
             try {
-                log(&#x27;parsing response body&#x27;);
+                log('parsing response body');
                 var info = JSON.parse(body);
-                log(&#x27;parsed response, error?&#x27;, info.error);
+                log('parsed response, error?', info.error);
                 if (info.error) {
-                    log(&#x27;error parsing\n&#x27; + body + &#x27;\n&#x27;);
+                    log('error parsing\n' + body + '\n');
                     var str = formNpmErrorMessage(name, info);
                     console.error(str);
 
@@ -1723,20 +1716,20 @@ npm.on(&#x27;exit&#x27;, function (code) {
                     deferred.reject(str);
                     return;
                 }
-                log(&#x27;extracting versions&#x27;);
+                log('extracting versions');
                 var versions = extractVersions(info);
-                log(&#x27;versions&#x27;, versions);
+                log('versions', versions);
 
                 if (!Array.isArray(versions)) {
-                    throw new Error(&#x27;Could not get versions for &#x27; + name +
-                        &#x27; from &#x27; + JSON.stringify(info) +
-                        &#x27; response &#x27; + JSON.stringify(response, null, 2));
+                    throw new Error('Could not get versions for ' + name +
+                        ' from ' + JSON.stringify(info) +
+                        ' response ' + JSON.stringify(response, null, 2));
                 }
 
                 var validVersions = versions.filter(cleanVersionForName);
                 var newerVersions = validVersions.filter(isLaterVersion);
-                log(&#x27;valid versions&#x27;, validVersions);
-                log(&#x27;newer versions&#x27;, newerVersions);
+                log('valid versions', validVersions);
+                log('newer versions', newerVersions);
 
                 deferred.resolve({
                     name: name,
@@ -1745,7 +1738,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
                 return;
             } catch (err) {
                 console.error(err);
-                deferred.reject(&#x27;Could not fetch versions for &#x27; + name);
+                deferred.reject('Could not fetch versions for ' + name);
                 return;
             }
         }
@@ -1766,7 +1759,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function isUrl(str) {
-  la(check.string(str), &#x27;expected a string&#x27;);
+  la(check.string(str), 'expected a string');
   return httpTester.test(str) || gitTester.test(str);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1782,39 +1775,39 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function nextVersions(options, nameVersionPairs, checkLatestOnly) {
-    check.verify.object(options, &#x27;expected object with options&#x27;);
-    check.verify.array(nameVersionPairs, &#x27;expected array&#x27;);
+    check.verify.object(options, 'expected object with options');
+    check.verify.array(nameVersionPairs, 'expected array');
     checkLatestOnly = !!checkLatestOnly;
     nameVersionPairs = cleanVersions(nameVersionPairs);
 
     var MAX_CHECK_TIMEOUT = 10000;
 
     if (!options.tldr) {
-        console.log(&#x27;checking NPM registry&#x27;);
+        console.log('checking NPM registry');
     }
     var fetchPromises = nameVersionPairs.map(fetchVersions);
     var fetchAllPromise = q.all(fetchPromises)
-        .timeout(MAX_CHECK_TIMEOUT, &#x27;timed out waiting for NPM&#x27;);
+        .timeout(MAX_CHECK_TIMEOUT, 'timed out waiting for NPM');
 
     return fetchAllPromise.then(function (results) {
-        check.verify.array(results, &#x27;expected list of results&#x27;);
-        log(&#x27;fetch all new version results&#x27;);
+        check.verify.array(results, 'expected list of results');
+        log('fetch all new version results');
         log(results);
 
         var available = results.filter(function (nameNewVersions) {
-            return nameNewVersions &#x26;&#x26;
-                check.array(nameNewVersions.versions) &#x26;&#x26;
+            return nameNewVersions &amp;&amp;
+                check.array(nameNewVersions.versions) &amp;&amp;
                 nameNewVersions.versions.length;
         });
         if (checkLatestOnly) {
             available = available.map(function (nameVersions) {
-                if (nameVersions.versions.length &#x3e; 1) {
+                if (nameVersions.versions.length &gt; 1) {
                     nameVersions.versions = nameVersions.versions.slice(-1);
                 }
                 return nameVersions;
             });
         } else {
-            console.log(&#x27;checking ALL versions&#x27;);
+            console.log('checking ALL versions');
         }
         return available;
     }, function (error) {
@@ -1840,12 +1833,12 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function report(updates, options) {
     options = options || {};
-    var useColors = Boolean(options.useColors) &#x26;&#x26; colorAvailable;
-    check.verify.array(updates, &#x27;expected array of updates&#x27;);
+    var useColors = Boolean(options.useColors) &amp;&amp; colorAvailable;
+    check.verify.array(updates, 'expected array of updates');
     // sets latest working version for each module too
     var cmd = formInstallCommand(updates);
 
-    console.log(&#x27;\n&#x3e; next updates:&#x27;);
+    console.log('\n&gt; next updates:');
     updates.forEach(function (moduleVersions) {
         reportModule(moduleVersions, useColors);
     });
@@ -1856,17 +1849,17 @@ npm.on(&#x27;exit&#x27;, function (code) {
 
     function printInstallCommand() {
         if (_.isUndefined(cmd)) {
-            console.log(&#x27;&#x3e; nothing can be updated :(&#x27;);
+            console.log('&gt; nothing can be updated :(');
         } else {
             if (options.keptUpdates) {
-                console.log(&#x27;&#x3e; kept working updates&#x27;);
+                console.log('&gt; kept working updates');
             } else {
                 cmd = cmd.trim();
-                var lines = cmd.split(&#x27;\n&#x27;).length;
+                var lines = cmd.split('\n').length;
                 if (lines === 1) {
-                    console.log(&#x27;&#x3e; use the following command to install working versions&#x27;);
+                    console.log('&gt; use the following command to install working versions');
                 } else {
-                    console.log(&#x27;&#x3e; use the following commands to install working versions&#x27;);
+                    console.log('&gt; use the following commands to install working versions');
                 }
                 console.log(cmd);
             }
@@ -1874,7 +1867,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
     }
 
     function printError(err) {
-        console.error(&#x27;Error reporting changes&#x27;);
+        console.error('Error reporting changes');
         console.error(err.message);
     }
     var start = options.changedLog ?
@@ -1895,10 +1888,10 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function reportFailure(text, useColors) {
-    if (colorAvailable &#x26;&#x26; useColors) {
+    if (colorAvailable &amp;&amp; useColors) {
         console.log(colors.redBright(text));
     } else {
-        console.log(&#x27;FAIL&#x27;, text);
+        console.log('FAIL', text);
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1914,10 +1907,10 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function reportSuccess(text, useColors) {
-    if (colorAvailable &#x26;&#x26; useColors) {
+    if (colorAvailable &amp;&amp; useColors) {
         console.log(colors.greenBright(text));
     } else {
-        console.log(&#x27;PASS&#x27;, text);
+        console.log('PASS', text);
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1938,23 +1931,23 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function reportAvailable(available, currentVersions, options) {
-    la(check.array(available), &#x27;expect an array of info objects&#x27;, available);
+    la(check.array(available), 'expect an array of info objects', available);
 
     if (!available.length) {
-        console.log(&#x27;nothing new is available&#x27;);
+        console.log('nothing new is available');
         return [];
     }
 
-    log(&#x27;report available&#x27;);
+    log('report available');
     log(available);
-    log(&#x27;current versions&#x27;);
+    log('current versions');
     log(JSON.stringify(currentVersions));
 
     la(check.maybe.object(currentVersions),
-        &#x27;expected current versions as an object, but was&#x27;, currentVersions);
+        'expected current versions as an object, but was', currentVersions);
 
     function getCurrentVersion(name) {
-        la(check.unemptyString(name), &#x27;missing name&#x27;);
+        la(check.unemptyString(name), 'missing name');
         if (!currentVersions) {
             return;
         }
@@ -1963,7 +1956,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
         }
         if (check.object(currentVersions[name])) {
             la(check.string(currentVersions[name].version),
-                &#x27;missing version for&#x27;, name, &#x27;in&#x27;, currentVersions);
+                'missing version for', name, 'in', currentVersions);
             return currentVersions[name].version;
         }
     }
@@ -1972,15 +1965,15 @@ npm.on(&#x27;exit&#x27;, function (code) {
     var updateStats = {};
 
     available.forEach(function (info) {
-        la(check.unemptyString(info.name), &#x27;missing module name&#x27;, info);
-        la(check.array(info.versions), &#x27;missing module versions&#x27;, info);
+        la(check.unemptyString(info.name), 'missing module name', info);
+        la(check.array(info.versions), 'missing module versions', info);
 
         var currentVersion = getCurrentVersion(info.name);
-        log(&#x27;version for&#x27;, info.name, currentVersion);
+        log('version for', info.name, currentVersion);
 
         if (currentVersion) {
             la(check.unemptyString(currentVersion),
-                &#x27;missing version&#x27;, currentVersion, &#x27;for&#x27;, info.name);
+                'missing version', currentVersion, 'for', info.name);
             updateStats[info.name] = {
                 name: info.name,
                 from: currentVersion
@@ -2006,16 +1999,16 @@ npm.on(&#x27;exit&#x27;, function (code) {
         var modules = [];
 
         available.forEach(function (info) {
-            la(check.unemptyString(info.name), &#x27;missing module name&#x27;, info);
-            la(check.array(info.versions), &#x27;missing module versions&#x27;, info);
+            la(check.unemptyString(info.name), 'missing module name', info);
+            la(check.array(info.versions), 'missing module versions', info);
 
-            var sep = &#x27;, &#x27;, versions;
+            var sep = ', ', versions;
 
-            if (info.versions.length &#x3c; 5) {
+            if (info.versions.length &lt; 5) {
                 versions = info.versions.join(sep);
             } else {
                 versions = info.versions.slice(0, 2)
-                    .concat(&#x27;...&#x27;)
+                    .concat('...')
                     .concat(info.versions.slice(info.versions.length - 2))
                     .join(sep);
             }
@@ -2024,8 +2017,8 @@ npm.on(&#x27;exit&#x27;, function (code) {
             if (!stats) {
                 return;
             }
-            la(check.object(stats), &#x27;could not get stats for&#x27;, info.name,
-                &#x27;all&#x27;, updateStats, &#x27;available stats&#x27;, info);
+            la(check.object(stats), 'could not get stats for', info.name,
+                'all', updateStats, 'available stats', info);
             modules.push({
                 name: info.name,
                 version: versions,
@@ -2033,13 +2026,13 @@ npm.on(&#x27;exit&#x27;, function (code) {
                 stats: stats
             });
         });
-        console.log(&#x27;\navailable updates:&#x27;);
+        console.log('\navailable updates:');
         if (modules.length) {
             print(modules, options);
-            console.log(&#x27;update stats from&#x27;, clc.underline(stats.url));
+            console.log('update stats from', clc.underline(stats.url));
         } else {
             console.log(available);
-            console.log(&#x27;no stats is available yet for these updates&#x27;);
+            console.log('no stats is available yet for these updates');
         }
         return available;
     });
@@ -2062,35 +2055,35 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function installCommand(updates) {
-    check.verify.array(updates, &#x27;expected array of updates&#x27;);
+    check.verify.array(updates, 'expected array of updates');
     if (!updates.length) {
         return;
     }
 
-    var cmd = &#x27;&#x27;;
+    var cmd = '';
     var pkg = loadPackage();
     if (!pkg) {
         // assume all dependencies are normal
-        cmd = installCommandType(updates, &#x27;dependencies&#x27;);
+        cmd = installCommandType(updates, 'dependencies');
     } else {
 
         var updatesByDependencyType = splitByType(updates, pkg);
-        console.assert(updatesByDependencyType, &#x27;could not split updates by type&#x27;);
+        console.assert(updatesByDependencyType, 'could not split updates by type');
 
         // console.log(updatesByDependencyType)
 
-        var depCmd = installCommandType(updatesByDependencyType.dependencies, &#x27;dependencies&#x27;);
-        var devCmd = installCommandType(updatesByDependencyType.devDependencies, &#x27;devDependencies&#x27;);
+        var depCmd = installCommandType(updatesByDependencyType.dependencies, 'dependencies');
+        var devCmd = installCommandType(updatesByDependencyType.devDependencies, 'devDependencies');
         var peerCmd = installCommandType(updatesByDependencyType.peerDependencies,
-            &#x27;peerDependencies&#x27;);
+            'peerDependencies');
         if (depCmd) {
-            cmd += depCmd + &#x27;\n&#x27;;
+            cmd += depCmd + '\n';
         }
         if (devCmd) {
-            cmd += devCmd + &#x27;\n&#x27;;
+            cmd += devCmd + '\n';
         }
         if (peerCmd) {
-            cmd += peerCmd + &#x27;\n&#x27;;
+            cmd += peerCmd + '\n';
         }
     }
     if (cmd) {
@@ -2116,7 +2109,7 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function revert(moduleName) {
     if (moduleName) {
-        console.log(&#x27;reverting module&#x27;, JSON.stringify(moduleName));
+        console.log('reverting module', JSON.stringify(moduleName));
     }
 
     var toCheck = getDependenciesToCheck({}, moduleName);
@@ -2150,19 +2143,19 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function colorProbability(probability, options) {
     if (probability === null) {
-        return &#x27;&#x27;;
+        return '';
     }
 
     options = options || {};
-    var useColors = !!options.color &#x26;&#x26; colorAvailable;
-    if (probability &#x3c; 0 || probability &#x3e; 1) {
-        throw new Error(&#x27;Expected probability between 0 and 1, not &#x27; + probability);
+    var useColors = !!options.color &amp;&amp; colorAvailable;
+    if (probability &lt; 0 || probability &gt; 1) {
+        throw new Error('Expected probability between 0 and 1, not ' + probability);
     }
-    var probabilityStr = (probability * 100).toFixed(0) + &#x27;%&#x27;;
+    var probabilityStr = (probability * 100).toFixed(0) + '%';
     if (useColors) {
-        if (probability &#x3e; 0.8) {
+        if (probability &gt; 0.8) {
             probabilityStr = colors.greenBright(probabilityStr);
-        } else if (probability &#x3e; 0.5) {
+        } else if (probability &gt; 0.5) {
             probabilityStr = colors.yellowBright(probabilityStr);
         } else {
             probabilityStr = colors.redBright(probabilityStr);
@@ -2183,15 +2176,15 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getSuccessStats(options) {
-    verify.unemptyString(options.name, &#x27;missing name&#x27;);
-    verify.unemptyString(options.from, &#x27;missing from version&#x27;);
-    verify.unemptyString(options.to, &#x27;missing to version&#x27;);
+    verify.unemptyString(options.name, 'missing name');
+    verify.unemptyString(options.from, 'missing from version');
+    verify.unemptyString(options.to, 'missing to version');
 
-    verify.webUrl(nextUpdateStatsUrl, &#x27;missing next update stats server url&#x27;);
+    verify.webUrl(nextUpdateStatsUrl, 'missing next update stats server url');
     var opts = {
-        uri: nextUpdateStatsUrl + &#x27;/package/&#x27; + options.name + &#x27;/&#x27; + options.from +
-            &#x27;/&#x27; + options.to,
-        method: &#x27;GET&#x27;,
+        uri: nextUpdateStatsUrl + '/package/' + options.name + '/' + options.from +
+            '/' + options.to,
+        method: 'GET',
         json: options
     };
     var defer = Q.defer();
@@ -2199,10 +2192,10 @@ npm.on(&#x27;exit&#x27;, function (code) {
         if (err || response.statusCode !== 200) {
             if (response) {
                 if (response.statusCode !== 404) {
-                    console.error(&#x27;could not get success stats for&#x27;, options.name);
+                    console.error('could not get success stats for', options.name);
                     console.error(opts);
                 }
-                console.error(&#x27;response status:&#x27;, response.statusCode);
+                console.error('response status:', response.statusCode);
             }
             if (err) {
                 console.error(err);
@@ -2227,18 +2220,18 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function printStats(options, stats) {
-    verify.object(stats, &#x27;missing stats object&#x27;);
-    verify.unemptyString(stats.name, &#x27;missing name&#x27;);
-    verify.unemptyString(stats.from, &#x27;missing from version&#x27;);
-    verify.unemptyString(stats.to, &#x27;missing to version&#x27;);
+    verify.object(stats, 'missing stats object');
+    verify.unemptyString(stats.name, 'missing name');
+    verify.unemptyString(stats.from, 'missing from version');
+    verify.unemptyString(stats.to, 'missing to version');
     stats.success = +stats.success || 0;
     stats.failure = +stats.failure || 0;
     var total = stats.success + stats.failure;
-    var probability = (total &#x3e; 0 ? stats.success / total: 0);
+    var probability = (total &gt; 0 ? stats.success / total: 0);
     var probabilityStr = colorProbability(probability, options);
-    console.log(&#x27;stats:&#x27;, stats.name, stats.from, &#x27;-&#x3e;&#x27;, stats.to,
-        &#x27;success probability&#x27;, probabilityStr,
-        stats.success, &#x27;success(es)&#x27;, stats.failure, &#x27;failure(s)&#x27;);
+    console.log('stats:', stats.name, stats.from, '-&gt;', stats.to,
+        'success probability', probabilityStr,
+        stats.success, 'success(es)', stats.failure, 'failure(s)');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2253,17 +2246,17 @@ npm.on(&#x27;exit&#x27;, function (code) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function sendUpdateResult(options) {
-    verify.unemptyString(options.name, &#x27;missing name&#x27;);
-    verify.unemptyString(options.from, &#x27;missing from version&#x27;);
-    verify.unemptyString(options.to, &#x27;missing to version&#x27;);
+    verify.unemptyString(options.name, 'missing name');
+    verify.unemptyString(options.from, 'missing from version');
+    verify.unemptyString(options.to, 'missing to version');
     if (options.success) {
         options.success = !!options.success;
     }
 
-    verify.webUrl(nextUpdateStatsUrl, &#x27;missing next update stats server url&#x27;);
+    verify.webUrl(nextUpdateStatsUrl, 'missing next update stats server url');
     var sendOptions = {
-        uri: nextUpdateStatsUrl + &#x27;/update&#x27;,
-        method: &#x27;POST&#x27;,
+        uri: nextUpdateStatsUrl + '/update',
+        method: 'POST',
         json: options
     };
     request(sendOptions, function ignoreResponse() {});
@@ -2289,21 +2282,21 @@ npm.on(&#x27;exit&#x27;, function (code) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        console.log(&#x27;stderr:&#x27;, data);
+        console.log('stderr:', data);
     }
     testErrors += data;
 });
 
-npm.on(&#x27;error&#x27;, function (err) {
-    console.error(&#x27;error:&#x27;, err);
+npm.on('error', function (err) {
+    console.error('error:', err);
     testErrors += err.<span class="apidocCodeKeywordSpan">toString</span>();
 });
 
 var deferred = q.defer();
-npm.on(&#x27;exit&#x27;, function (code) {
+npm.on('exit', function (code) {
     if (code) {
-        console.error(&#x27;npm returned&#x27;, code);
-        console.error(&#x27;errors:\n&#x27; + testErrors);
+        console.error('npm returned', code);
+        console.error('errors:\n' + testErrors);
 ...</pre></li>
     </ul>
 
@@ -2316,3 +2309,4 @@ npm.on(&#x27;exit&#x27;, function (code) {
     ]
 </div>
 </div>
+</body></html>
