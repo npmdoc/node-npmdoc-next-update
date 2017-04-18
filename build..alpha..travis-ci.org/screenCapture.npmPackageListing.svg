@@ -1,30 +1,30 @@
 <svg height="430" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="430" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-18 06:57:29 +0000    82838 bytes  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-18 06:57:29 +0000     1332 bytes  History.md</tspan>
-<tspan x="10" y="58">  2.  2017-04-18 06:57:29 +0000    10843 bytes  README.md</tspan>
-<tspan x="10" y="74">  3.  2017-04-18 06:57:29 +0000     1867 bytes  bin/next-update.js</tspan>
-<tspan x="10" y="90">  4.  2017-04-18 06:57:29 +0000      210 bytes  index.js</tspan>
-<tspan x="10" y="106">  5.  2017-04-18 06:57:29 +0000     5070 bytes  package.json</tspan>
-<tspan x="10" y="122">  6.  2017-04-18 06:57:29 +0000     2438 bytes  src/cli-options.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-18 06:57:29 +0000     4442 bytes  src/dependencies.js</tspan>
-<tspan x="10" y="154">  8.  2017-04-18 06:57:29 +0000     1897 bytes  src/exec-test.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-18 06:57:29 +0000     3035 bytes  src/filter-allowed-updates.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-18 06:57:29 +0000     1126 bytes  src/get-known-dependencies.js</tspan>
-<tspan x="10" y="202"> 11.  2017-04-18 06:57:29 +0000      616 bytes  src/local-module-version.js</tspan>
-<tspan x="10" y="218"> 12.  2017-04-18 06:57:29 +0000     2593 bytes  src/module-install.js</tspan>
-<tspan x="10" y="234"> 13.  2017-04-18 06:57:29 +0000      572 bytes  src/moduleName.js</tspan>
-<tspan x="10" y="250"> 14.  2017-04-18 06:57:29 +0000      578 bytes  src/next-update-as-module.js</tspan>
-<tspan x="10" y="266"> 15.  2017-04-18 06:57:29 +0000     5899 bytes  src/next-update.js</tspan>
-<tspan x="10" y="282"> 16.  2017-04-18 06:57:29 +0000     1894 bytes  src/npm-test.js</tspan>
-<tspan x="10" y="298"> 17.  2017-04-18 06:57:29 +0000     1462 bytes  src/print-modules-table.js</tspan>
-<tspan x="10" y="314"> 18.  2017-04-18 06:57:29 +0000     9701 bytes  src/registry.js</tspan>
-<tspan x="10" y="330"> 19.  2017-04-18 06:57:29 +0000     3926 bytes  src/report-available.js</tspan>
-<tspan x="10" y="346"> 20.  2017-04-18 06:57:29 +0000     4023 bytes  src/report-install-command.js</tspan>
-<tspan x="10" y="362"> 21.  2017-04-18 06:57:29 +0000     3511 bytes  src/report.js</tspan>
-<tspan x="10" y="378"> 22.  2017-04-18 06:57:29 +0000      685 bytes  src/revert.js</tspan>
-<tspan x="10" y="394"> 23.  2017-04-18 06:57:29 +0000     3615 bytes  src/stats.js</tspan>
-<tspan x="10" y="410"> 24.  2017-04-18 06:57:29 +0000    11503 bytes  src/test-module-version.js</tspan>
+<tspan x="10" y="26">  0.  2017-04-18 06:58:52 +0000    82838 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-18 06:58:52 +0000     1332 bytes  History.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-18 06:58:52 +0000    10843 bytes  README.md</tspan>
+<tspan x="10" y="74">  3.  2017-04-18 06:58:52 +0000     1867 bytes  bin/next-update.js</tspan>
+<tspan x="10" y="90">  4.  2017-04-18 06:58:52 +0000      210 bytes  index.js</tspan>
+<tspan x="10" y="106">  5.  2017-04-18 06:58:52 +0000     5070 bytes  package.json</tspan>
+<tspan x="10" y="122">  6.  2017-04-18 06:58:52 +0000     2438 bytes  src/cli-options.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-18 06:58:52 +0000     4442 bytes  src/dependencies.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-18 06:58:52 +0000     1897 bytes  src/exec-test.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-18 06:58:52 +0000     3035 bytes  src/filter-allowed-updates.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-18 06:58:52 +0000     1126 bytes  src/get-known-dependencies.js</tspan>
+<tspan x="10" y="202"> 11.  2017-04-18 06:58:52 +0000      616 bytes  src/local-module-version.js</tspan>
+<tspan x="10" y="218"> 12.  2017-04-18 06:58:52 +0000     2593 bytes  src/module-install.js</tspan>
+<tspan x="10" y="234"> 13.  2017-04-18 06:58:52 +0000      572 bytes  src/moduleName.js</tspan>
+<tspan x="10" y="250"> 14.  2017-04-18 06:58:52 +0000      578 bytes  src/next-update-as-module.js</tspan>
+<tspan x="10" y="266"> 15.  2017-04-18 06:58:52 +0000     5899 bytes  src/next-update.js</tspan>
+<tspan x="10" y="282"> 16.  2017-04-18 06:58:52 +0000     1894 bytes  src/npm-test.js</tspan>
+<tspan x="10" y="298"> 17.  2017-04-18 06:58:52 +0000     1462 bytes  src/print-modules-table.js</tspan>
+<tspan x="10" y="314"> 18.  2017-04-18 06:58:52 +0000     9701 bytes  src/registry.js</tspan>
+<tspan x="10" y="330"> 19.  2017-04-18 06:58:52 +0000     3926 bytes  src/report-available.js</tspan>
+<tspan x="10" y="346"> 20.  2017-04-18 06:58:52 +0000     4023 bytes  src/report-install-command.js</tspan>
+<tspan x="10" y="362"> 21.  2017-04-18 06:58:52 +0000     3511 bytes  src/report.js</tspan>
+<tspan x="10" y="378"> 22.  2017-04-18 06:58:52 +0000      685 bytes  src/revert.js</tspan>
+<tspan x="10" y="394"> 23.  2017-04-18 06:58:52 +0000     3615 bytes  src/stats.js</tspan>
+<tspan x="10" y="410"> 24.  2017-04-18 06:58:52 +0000    11503 bytes  src/test-module-version.js</tspan>
 </text>
 </svg>
