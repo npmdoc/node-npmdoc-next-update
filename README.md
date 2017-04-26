@@ -1,6 +1,6 @@
 # npmdoc-next-update
 
-#### api documentation for  [next-update (v1.5.1)](https://github.com/bahmutov/next-update)  [![npm package](https://img.shields.io/npm/v/npmdoc-next-update.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-next-update) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-next-update.svg)](https://travis-ci.org/npmdoc/node-npmdoc-next-update)
+#### basic api documentation for  [next-update (v1.5.1)](https://github.com/bahmutov/next-update)  [![npm package](https://img.shields.io/npm/v/npmdoc-next-update.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-next-update) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-next-update.svg)](https://travis-ci.org/npmdoc/node-npmdoc-next-update)
 
 #### Tests if module's dependencies can be updated to the newer version without breaking the tests
 
