@@ -198,7 +198,7 @@
 <tspan x="10" y="3130">  │ │   ├─┬ dashdash@1.14.1 </tspan>
 <tspan x="10" y="3146">  │ │   │ └── assert-plus@1.0.0 </tspan>
 <tspan x="10" y="3162">  │ │   ├── ecc-jsbn@0.1.1 </tspan>
-<tspan x="10" y="3178">  │ │   ├─┬ getpass@0.1.6 </tspan>
+<tspan x="10" y="3178">  │ │   ├─┬ getpass@0.1.7 </tspan>
 <tspan x="10" y="3194">  │ │   │ └── assert-plus@1.0.0 </tspan>
 <tspan x="10" y="3210">  │ │   ├── jodid25519@1.0.2 </tspan>
 <tspan x="10" y="3226">  │ │   ├── jsbn@0.1.1 </tspan>
@@ -225,7 +225,7 @@
 <tspan x="10" y="3562">    │ ├── os-tmpdir@1.0.2 </tspan>
 <tspan x="10" y="3578">    │ ├── osenv@0.1.4 </tspan>
 <tspan x="10" y="3594">    │ ├── uuid@2.0.3 </tspan>
-<tspan x="10" y="3610">    │ └─┬ write-file-atomic@1.3.1 </tspan>
+<tspan x="10" y="3610">    │ └─┬ write-file-atomic@1.3.3 </tspan>
 <tspan x="10" y="3626">    │   ├── imurmurhash@0.1.4 </tspan>
 <tspan x="10" y="3642">    │   └── slide@1.1.6 </tspan>
 <tspan x="10" y="3658">    ├── is-npm@1.0.0 </tspan>
